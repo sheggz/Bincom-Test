@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %} 
+        <title>Video Gallery</title>
+        <link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="topnav">
+            <a class="#home">Home</a>
+            <a class="#music">Music Videos</a>
+            <a class="#aboutus">About Us</a>
+        </div>
+
+        <div class="video-container">
+            {% for i in vids %}
+            <video id="my-video-{{ forloop.counter }}" class="video-js" controls preload="auto" width="485" height="360" muted="true" data-setup="{}">
+                <source src="{{ i.file.url }}" type="video/mp4">
+            </video>
+            {% endfor %}
+        </div>
+
+        <script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
+        <script src="{% static 'js/script.js' %}"></script>
+
+    </body>
+</html>
